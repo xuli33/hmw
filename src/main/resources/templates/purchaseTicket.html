@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+	<!-- META DATA -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!--font-family-->
+	<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+	<!-- TITLE OF SITE -->
+	<title>Home</title>
+
+	<!-- favicon img -->
+	<link rel="shortcut icon" type="image/icon" href="/assets/logo/favicon.png"/>
+
+	<!--font-awesome.min.css-->
+	<link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+
+	<!--animate.css-->
+	<link rel="stylesheet" href="/assets/css/animate.css" />
+
+	<!--hover.css-->
+	<link rel="stylesheet" href="/assets/css/hover-min.css">
+
+	<!--datepicker.css-->
+	<link rel="stylesheet"  href="/assets/css/datepicker.css" >
+
+	<!--owl.carousel.css-->
+	<link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/assets/css/owl.theme.default.min.css"/>
+
+	<!-- range css-->
+	<link rel="stylesheet" href="/assets/css/jquery-ui.min.css" />
+
+	<!--bootstrap.min.css-->
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+	<!-- bootsnav -->
+	<link rel="stylesheet" href="/assets/css/bootsnav.css"/>
+
+	<!--style.css-->
+	<link rel="stylesheet" href="/assets/css/style.css" />
+
+	<!--responsive.css-->
+	<link rel="stylesheet" href="/assets/css/responsive.css" />
+	<style type="text/css">
+		table tr th{
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- main-menu Start -->
+<header class="top-area">
+	<div class="header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="logo">
+						<a href="index.html">
+							购票<span>系统</span>
+						</a>
+					</div><!-- /.logo-->
+				</div><!-- /.col-->
+				<div class="col-sm-10">
+					<div class="main-menu">
+
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<i class="fa fa-bars"></i>
+							</button><!-- / button-->
+						</div><!-- /.navbar-header-->
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="smooth-menu"><a href="/searchTicketHistory" >购票记录</a></li>
+
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.main-menu-->
+				</div><!-- /.col-->
+			</div><!-- /.row -->
+			<div class="home-border"></div><!-- /.home-border-->
+		</div><!-- /.container-->
+	</div><!-- /.header-area -->
+
+</header><!-- /.top-area-->
+<!-- main-menu End -->
+
+
+<section id="home" class="about-us">
+	<div class="container">
+		<div class="about-us-content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="single-about-us">
+						<div class="about-us-txt">
+							<h2>
+								厦门市购票系统
+							</h2>
+							<div class="about-btn">
+								<!-- <button  class="about-view">
+                                    explore now
+                                </button> -->
+							</div><!--/.about-btn-->
+						</div><!--/.about-us-txt-->
+					</div><!--/.single-about-us-->
+				</div><!--/.col-->
+				<div class="col-sm-0">
+					<div class="single-about-us">
+
+					</div><!--/.single-about-us-->
+				</div><!--/.col-->
+			</div><!--/.row-->
+		</div><!--/.about-us-content-->
+	</div><!--/.container-->
+
+</section><!--/.about-us-->
+<!--about-us end -->
+
+<!--galley start-->
+<section id="gallery" class="gallery">
+	<div class="container">
+		<div class="gallery-details">
+			<div class="gallary-header text-center">
+				<h2>
+					车票购买
+				</h2>
+				<p>
+					请仔细确认您需要购买的车票信息，祝您生活愉快.
+				</p>
+			</div><!--/.gallery-header-->
+			<div class="gallery-box">
+				<div class="gallery-content">
+					<div class="filtr-container">
+						<div class="row">
+
+							<form class="form-horizontal" role="form"
+								  th:action="@{/saveTicketHistory}" th:object="${ticketHistoryForm}"
+								  th:method="post" enctype="multipart/form-data" onsubmit="return checkData()">
+								<div class="form-group row">
+									<label class="col-md-3 col-form-label">车次：</label>
+									<div class="col-md-9">
+										<input  class="form-control" name="ticketId"th:value="${ticketCopy.id}" readonly>
+									</div>
+
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 col-form-label">车次：</label>
+									<label  class="col-md-3 col-form-label"th:text="${ticketCopy.trainNumber}">车次：</label>
+
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 col-form-label">出发时间：</label>
+									<label class="col-md-5 col-form-label"th:text="${ticketCopy.startTime}"></label>
+									<!--<div class="col-md-9">-->
+									<!--<input type="file" class="form-control" id="pic" th:field="*{picFile}"-->
+									<!--th:classappend="${#fields.hasErrors('picFile')}?'text-danger'">-->
+									<!--</div>-->
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 col-form-label">到达时间：</label>
+									<label class="col-md-5 col-form-label"th:text="${ticketCopy.endTime}"></label>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 col-form-label">目的地：</label>
+									<label class="col-md-6 col-form-label"th:text="${ticketCopy.destinate}">目的地：</label>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 col-form-label">车费：</label>
+									<label class="col-md-3 col-form-label"th:text="${ticketCopy.price}" id="trainPrice">车费：</label>
+								</div>
+
+								<div class="form-group row">
+									<label for="identityCard" class="col-md-3 col-form-label">身份证件：</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="identityCard"
+											   placeholder="请输入身份证号"  th:field="*{identityCard}">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="price" class="col-md-3 col-form-label"
+										   th:classappend="${#fields.hasErrors('price')}?'badge badge-danger'">金额：</label>
+									<div class="col-md-2">
+										<input type="type" class="form-control" id="price"
+											   placeholder="请将现金塞入验钞口"  th:field="*{price}">
+									</div>
+									<button onclick="addMonnyButton()" class="col-md-2 col-form-label">加钞</button><label  class="col-md-3 col-form-label">(仅支持1、2、5、10、20、50、100元)</label>
+									<div class="col-md-2">
+										<input type="type" class="form-control" id="addMonny"placeholder="继续放钞">
+									</div>
+								</div>
+								<div class="form-group row">
+									<input class="btn btn-block" type="submit" value="购买" />
+								</div>
+							</form>
+						</div><!-- /.row -->
+
+					</div><!-- /.filtr-container-->
+				</div><!-- /.gallery-content -->
+			</div><!--/.galley-box-->
+		</div><!--/.gallery-details-->
+	</div><!--/.container-->
+
+</section><!--/.gallery-->
+<!--gallery end-->
+
+
+<!-- footer-copyright start -->
+<footer  class="footer-copyright">
+	<div class="container">
+		<div class="foot-icons ">
+			<p>Copyright &copy; 2018.林雅晴.</p>
+		</div><!--/.foot-icons-->
+		<div id="scroll-Top">
+			<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+		</div><!--/.scroll-Top-->
+	</div><!-- /.container-->
+
+</footer><!-- /.footer-copyright-->
+<!-- footer-copyright end -->
+<script>
+    function checkData() {
+        var trainPay=$("#trainPrice").text();
+        var inputMonny=$("#price").val();
+        var card=$("#identityCard").val();
+        if(inputMonny==null || inputMonny==""){
+            alert("您还未放钞！")
+        }
+        if (inputMonny < trainPay){
+            alert("您的钞票不够，请继续放钞！")
+            return false;
+        }else if(isCardNo(card)){
+            timeout(function () {
+                alert("出票成功，请从钞票口取走您的零钱<"+ parseFloat(inputMonny-trainPay) +">，和您的车票！");
+				return true;
+            },2000)
+
+
+		}
+    }
+    //身份证验证
+    function isCardNo(card){
+        // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(reg.test(card) === false){
+            alert("身份证输入不合法");
+            return false;
+        }else{
+            return true;
+		}
+    }
+    //加钞
+	var flag=true;
+	function addMonnyButton() {
+		var addMonny=$("#addMonny").val();
+		var inputMonny=$("#price").val();
+        if(addMonny == 1 || addMonny == 2 || addMonny == 5 || addMonny == 10 || addMonny == 20 || addMonny == 50 || addMonny == 100 ){
+            if(inputMonny==null || inputMonny==""){
+                inputMonny=0.0;
+			}
+            var add=parseInt(addMonny)+parseInt(inputMonny);
+            $("#price").val(parseFloat(add));
+        }else{
+            alert("您放的钞票价值不合法！请重新放钞！")
+            return false;
+        }
+    }
+</script>
+<script src="/assets/js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<!--modernizr.min.js-->
+<script  src="/assets/js/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script  src="/assets/js/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="/assets/js/bootsnav.js"></script>
+
+<!-- jquery.filterizr.min.js -->
+<script src="/assets/js/jquery.filterizr.min.js"></script>
+
+<script  src="/assets/js/jquery.easing.min.js"></script>
+
+<!--jquery-ui.min.js-->
+<script src="/assets/js/jquery-ui.min.js"></script>
+
+<!-- counter js -->
+<script src="/assets/js/jquery.counterup.min.js"></script>
+<script src="/assets/js/waypoints.min.js"></script>
+
+<!--owl.carousel.js-->
+<script  src="/assets/js/owl.carousel.min.js"></script>
+
+<!-- jquery.sticky.js -->
+<script src="/assets/js/jquery.sticky.js"></script>
+
+<!--datepicker.js-->
+<script  src="/assets/js/datepicker.js"></script>
+
+<!--Custom JS-->
+<script src="/assets/js/custom.js"></script>
+
+</body>
+</html>

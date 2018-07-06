@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- META DATA -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- TITLE OF SITE -->
+    <title>Home</title>
+
+    <!-- favicon img -->
+    <link rel="shortcut icon" type="image/icon" href="/assets/logo/favicon.png"/>
+
+    <!--font-awesome.min.css-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+
+    <!--animate.css-->
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+
+    <!--hover.css-->
+    <link rel="stylesheet" href="/assets/css/hover-min.css">
+
+    <!--datepicker.css-->
+    <link rel="stylesheet"  href="/assets/css/datepicker.css" >
+
+    <!--owl.carousel.css-->
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css"/>
+
+    <!-- range css-->
+    <link rel="stylesheet" href="/assets/css/jquery-ui.min.css" />
+
+    <!--bootstrap.min.css-->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="/assets/css/bootsnav.css"/>
+
+    <!--style.css-->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!--responsive.css-->
+    <link rel="stylesheet" href="/assets/css/responsive.css" />
+    <style type="text/css">
+        table tr th{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- main-menu Start -->
+<header class="top-area">
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="logo">
+                        <a href="index.html">
+                            购票<span>系统</span>
+                        </a>
+                    </div><!-- /.logo-->
+                </div><!-- /.col-->
+                <div class="col-sm-10">
+                    <div class="main-menu">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <i class="fa fa-bars"></i>
+                            </button><!-- / button-->
+                        </div><!-- /.navbar-header-->
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="smooth-menu"><a href="/searchTicketHistory" >购票记录</a></li>
+
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.main-menu-->
+                </div><!-- /.col-->
+            </div><!-- /.row -->
+            <div class="home-border"></div><!-- /.home-border-->
+        </div><!-- /.container-->
+    </div><!-- /.header-area -->
+
+</header><!-- /.top-area-->
+<!-- main-menu End -->
+
+
+<section id="home" class="about-us">
+    <div class="container">
+        <div class="about-us-content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="single-about-us">
+                        <div class="about-us-txt">
+                            <h2>
+                                厦门市购票系统
+                            </h2>
+                            <div class="about-btn">
+                                <!-- <button  class="about-view">
+                                    explore now
+                                </button> -->
+                            </div><!--/.about-btn-->
+                        </div><!--/.about-us-txt-->
+                    </div><!--/.single-about-us-->
+                </div><!--/.col-->
+                <div class="col-sm-0">
+                    <div class="single-about-us">
+
+                    </div><!--/.single-about-us-->
+                </div><!--/.col-->
+            </div><!--/.row-->
+        </div><!--/.about-us-content-->
+    </div><!--/.container-->
+
+</section><!--/.about-us-->
+<!--about-us end -->
+
+<!--galley start-->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="gallery-details">
+            <div class="gallary-header text-center">
+                <h2>
+                    购买车票历史记录
+                </h2>
+            </div><!--/.gallery-header-->
+            <div class="gallery-box">
+                <div class="gallery-content">
+                    <div class="filtr-container">
+                        <div class="row">
+
+                            <table border="1" align="center">
+                                <tr>
+                                    <th width="100" >车次</th>
+                                    <th width="200">出发时间</th>
+                                    <th width="200">到达时间</th>
+                                    <th width="200">目的地</th>
+                                    <th width="200">购买时间</th>
+                                    <th width="200">金额</th>
+                                    <th width="200" >身份证</th>
+                                </tr>
+                                <tr th:each="ticket:${ticketLists}">
+                                    <th width="100" th:text="${ticket.trainNumber}">车次</th>
+                                    <th width="200" th:text="${ticket.startTime}">出发时间</th>
+                                    <th width="200" th:text="${ticket.endTime}">到达时间</th>
+                                    <th width="200" th:text="${ticket.destinate}">目的地</th>
+                                    <th width="200" th:text="${ticket.buyTicketTime}">购买时间</th>
+                                    <th width="200" th:text="${ticket.price}">金额</th>
+                                    <th width="200" th:text="${ticket.identityCard}">身份证</th>
+
+                                </tr>
+
+                            </table>
+                        </div><!-- /.row -->
+
+                    </div><!-- /.filtr-container-->
+                </div><!-- /.gallery-content -->
+            </div><!--/.galley-box-->
+        </div><!--/.gallery-details-->
+    </div><!--/.container-->
+
+</section><!--/.gallery-->
+<!--gallery end-->
+
+<!-- footer-copyright start -->
+<footer  class="footer-copyright">
+    <div class="container">
+        <div class="foot-icons ">
+            <p>Copyright &copy; 2018.林雅晴.</p>
+        </div><!--/.foot-icons-->
+        <div id="scroll-Top">
+            <i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+        </div><!--/.scroll-Top-->
+    </div><!-- /.container-->
+
+</footer><!-- /.footer-copyright-->
+<!-- footer-copyright end -->
+
+<script src="/assets/js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<!--modernizr.min.js-->
+<script  src="/assets/js/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script  src="/assets/js/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="/assets/js/bootsnav.js"></script>
+
+<!-- jquery.filterizr.min.js -->
+<script src="/assets/js/jquery.filterizr.min.js"></script>
+
+<script  src="/assets/js/jquery.easing.min.js"></script>
+
+<!--jquery-ui.min.js-->
+<script src="/assets/js/jquery-ui.min.js"></script>
+
+<!-- counter js -->
+<script src="/assets/js/jquery.counterup.min.js"></script>
+<script src="/assets/js/waypoints.min.js"></script>
+
+<!--owl.carousel.js-->
+<script  src="/assets/js/owl.carousel.min.js"></script>
+
+<!-- jquery.sticky.js -->
+<script src="/assets/js/jquery.sticky.js"></script>
+
+<!--datepicker.js-->
+<script  src="/assets/js/datepicker.js"></script>
+
+<!--Custom JS-->
+<script src="/assets/js/custom.js"></script>
+
+</body>
+</html>

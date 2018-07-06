@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+	<!-- META DATA -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!--font-family-->
+	<link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet" />
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+
+	<!-- TITLE OF SITE -->
+	<title>Home</title>
+
+	<!-- favicon img -->
+	<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
+
+	<!--font-awesome.min.css-->
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+	<!--animate.css-->
+	<link rel="stylesheet" href="assets/css/animate.css" />
+
+	<!--hover.css-->
+	<link rel="stylesheet" href="assets/css/hover-min.css">
+
+	<!--datepicker.css-->
+	<link rel="stylesheet"  href="assets/css/datepicker.css" >
+
+	<!--owl.carousel.css-->
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css"/>
+
+	<!-- range css-->
+	<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
+
+	<!--bootstrap.min.css-->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+	<!-- bootsnav -->
+	<link rel="stylesheet" href="assets/css/bootsnav.css"/>
+
+	<!--style.css-->
+	<link rel="stylesheet" href="assets/css/style.css" />
+
+	<!--responsive.css-->
+	<link rel="stylesheet" href="assets/css/responsive.css" />
+	<style type="text/css">
+		table tr th{
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- main-menu Start -->
+<header class="top-area">
+	<div class="header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2">
+					<div class="logo">
+						<a href="index.html">
+							购票<span>系统</span>
+						</a>
+					</div><!-- /.logo-->
+				</div><!-- /.col-->
+				<div class="col-sm-10">
+					<div class="main-menu">
+
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<i class="fa fa-bars"></i>
+							</button><!-- / button-->
+						</div><!-- /.navbar-header-->
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="smooth-menu"><a href="/searchTicketHistory" >购票记录</a></li>
+
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.main-menu-->
+				</div><!-- /.col-->
+			</div><!-- /.row -->
+			<div class="home-border"></div><!-- /.home-border-->
+		</div><!-- /.container-->
+	</div><!-- /.header-area -->
+
+</header><!-- /.top-area-->
+<!-- main-menu End -->
+
+
+<section id="home" class="about-us">
+	<div class="container">
+		<div class="about-us-content">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="single-about-us">
+						<div class="about-us-txt">
+							<h2>
+								厦门市购票系统
+							</h2>
+							<div class="about-btn">
+								<!-- <button  class="about-view">
+									explore now
+								</button> -->
+							</div><!--/.about-btn-->
+						</div><!--/.about-us-txt-->
+					</div><!--/.single-about-us-->
+				</div><!--/.col-->
+				<div class="col-sm-0">
+					<div class="single-about-us">
+
+					</div><!--/.single-about-us-->
+				</div><!--/.col-->
+			</div><!--/.row-->
+		</div><!--/.about-us-content-->
+	</div><!--/.container-->
+
+</section><!--/.about-us-->
+<!--about-us end -->
+
+<!--travel-box start-->
+<section  class="travel-box">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="single-travel-boxes">
+					<div id="desc-tabs" class="desc-tabs">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active">
+								<a href="#ticket" aria-controls="ticket" role="tab" data-toggle="tab">
+									<i class="fa fa-tree"></i>
+									列车票
+								</a>
+							</li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+
+							<div role="tabpanel" class="tab-pane fade in active" id="ticket">
+								<div class="tab-para">
+									<form class="form-horizontal" role="form"
+										  th:action="@{/searchTicketByDestinateAndStartTime}"
+										  th:method="post" enctype="multipart/form-data" th:object="${ticketForm}">
+										<div class="row">
+
+											<div class="col-lg-4 col-md-4 col-sm-12">
+												<div class="single-tab-select-box">
+													<h2>目的地</h2>
+													<div class="travel-select-icon">
+														<select class="form-control " name="destinate">
+														<option value=''>选择您的目的地</option>
+														 <option th:each="destinate:${destinateList}"th:value="${destinate}" th:text="${destinate}" th:field="*{destinate}"></option>
+														</select>
+														<!--<select class="form-control " name="destinate">-->
+
+															<!--<option value="default">选择您的目的地</option>&lt;!&ndash; /.option&ndash;&gt;-->
+															<!--<option value="北京">北京</option>&lt;!&ndash; /.option&ndash;&gt;-->
+															<!--<option value="泉州">泉州</option>&lt;!&ndash; /.option&ndash;&gt;-->
+															<!--<option value="上海">上海</option>&lt;!&ndash; /.option&ndash;&gt;-->
+															<!--<option value="福州">福州</option>&lt;!&ndash; /.option&ndash;&gt;-->
+															<!--<option value="南京">南京</option>&lt;!&ndash; /.option&ndash;&gt;-->
+
+														<!--</select>&lt;!&ndash; /.select&ndash;&gt;&ndash;&gt;-->
+													</div><!-- /.travel-select-icon -->
+
+												</div><!--/.single-tab-select-box-->
+											</div><!--/.col-->
+
+											<div class="col-lg-2 col-md-3 col-sm-4">
+												<div class="single-tab-select-box">
+													<h2>出发日</h2>
+													<div class="travel-check-icon">
+															<input type="text" class="form-control"
+																   data-toggle="datepicker"
+																   placeholder="2018-07-10" name="startTime" th:field="*{startTime}">
+													</div><!-- /.travel-check-icon -->
+												</div><!--/.single-tab-select-box-->
+											</div><!--/.col-->
+										</div><!--/.row-->
+
+										<div class="row">
+											<div class="col-sm-5"></div><!--/.col-->
+											<div class="clo-sm-7">
+												<div class="about-btn travel-mrt-0 pull-right">
+													<input class="about-view travel-btn" type="submit" value="点击查询"/>
+													<!--<button  class="about-view travel-btn" onclick="linkFunction()">-->
+													<!--点击查询-->
+													<!--</button>&lt;!&ndash;/.travel-btn&ndash;&gt;-->
+												</div><!--/.about-btn-->
+											</div><!--/.col-->
+										</div><!--/.row-->
+									</form>
+								</div><!--/.tab-para-->
+
+							</div><!--/.tabpannel-->
+
+						</div><!--/.tab content-->
+					</div><!--/.desc-tabs-->
+				</div><!--/.single-travel-box-->
+			</div><!--/.col-->
+		</div><!--/.row-->
+	</div><!--/.container-->
+
+</section><!--/.travel-box-->
+<!--travel-box end-->
+
+<!-- footer-copyright start -->
+<footer  class="footer-copyright">
+	<div class="container">
+		<div class="foot-icons ">
+			<p>Copyright &copy; 2018.林雅晴.</p>
+		</div><!--/.foot-icons-->
+		<div id="scroll-Top">
+			<i class="fa fa-angle-double-up return-to-top" id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+		</div><!--/.scroll-Top-->
+	</div><!-- /.container-->
+
+</footer><!-- /.footer-copyright-->
+<!-- footer-copyright end -->
+<script src="assets/js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<!--modernizr.min.js-->
+<script  src="assets/js/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script  src="assets/js/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="assets/js/bootsnav.js"></script>
+
+<!-- jquery.filterizr.min.js -->
+<script src="assets/js/jquery.filterizr.min.js"></script>
+
+<script  src="assets/js/jquery.easing.min.js"></script>
+
+<!--jquery-ui.min.js-->
+<script src="assets/js/jquery-ui.min.js"></script>
+
+<!-- counter js -->
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+
+<!--owl.carousel.js-->
+<script  src="assets/js/owl.carousel.min.js"></script>
+
+<!-- jquery.sticky.js -->
+<script src="assets/js/jquery.sticky.js"></script>
+
+<!--datepicker.js-->
+<script  src="assets/js/datepicker.js"></script>
+
+<!--Custom JS-->
+<script src="assets/js/custom.js"></script>
+
+</body>
+</html>
